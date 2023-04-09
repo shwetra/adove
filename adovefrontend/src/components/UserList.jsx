@@ -3,14 +3,15 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import View from "./View";
 import Update from "./UpdateUser";
-import Allpost from "./AllPost";
+import { useNavigate } from "react-router-dom";
 
 const UserList = () => {
   const [Data,setData]=useState()
+  const nav=useNavigate()
 
   useEffect(()=>{
     async function fetch(){
-      const user=await axios.get("http://localhost:8000/allusers")
+      const user=await axios.get("https://adove.onrender.com/allusers")
       setData(user.data)
     }
     fetch()
@@ -18,30 +19,18 @@ const UserList = () => {
   },[])
 
   const handleDelete = (_id) => {
-    axios.delete(`http://localhost:8000/users/${_id}`)
+    axios.delete(`https://adove.onrender.com/users/${_id}`)
     .then((res) => {
       console.log(res);
       alert("user has been delete")
-      
+      nav("/UserAnalytics")
     })
     .catch((err) => {
       console.log(err);
     });
   };
 
-  const handleUpdate = (_id, updatedData) => {
-    axios.put(`http://localhost:8000/users/${_id}`, updatedData)
-      .then((res) => {
-        console.log(res);
-        alert("User has been updated!");
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-
   
-
   return (
     <>
     <Flex justifyContent="center" alignItems="center">
@@ -78,8 +67,6 @@ const UserList = () => {
         </Table>
       </Box>
     </Flex>
-    <Heading>ALL Content</Heading>
-    <Allpost/>
     </>
   );
 };

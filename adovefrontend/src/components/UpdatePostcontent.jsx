@@ -44,11 +44,11 @@ export default function UpdatePost({id}) {
           e.preventDefault();
           console.log(formData); 
           console.log(id)  
-         await axios.put(`http://localhost:8000/posts/${id}`, formData)
+         await axios.put(`https://adove.onrender.com/posts/${id}`, formData)
             .then((res) => {
               console.log(res);
               alert("contant has been updated");
-              nav("/UserAnalytics")
+              nav("/")
             })
             .catch((err) => {
               console.log(err);

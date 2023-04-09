@@ -11,7 +11,7 @@ const UserAnalytics = () => {
 
   useEffect(()=>{
     async function fetch(){
-      const user=await axios.get("http://localhost:8000/analytics/users/top-active")
+      const user=await axios.get("https://adove.onrender.com/analytics/users/top-active")
       setData(user.data.topUsers)
     }
     fetch()
@@ -20,18 +20,11 @@ const UserAnalytics = () => {
 
   useEffect(()=>{
     async function fetchall(){
-      const user=await axios.get("http://localhost:8000/analytics/users")
+      const user=await axios.get("https://adove.onrender.com/analytics/users")
       setallData(user.data.total_users)
     }
     fetchall()
   },[])
-
-  const Handle=()=>{
-    nav("/")
-  }
-
-
-  
 
   return (
     <>
@@ -72,8 +65,6 @@ const UserAnalytics = () => {
         </Table>
       </Box>
     </Flex>
-
-    <Button onClick={Handle} mt="20px">Go Back</Button>
     </>
   );
 };

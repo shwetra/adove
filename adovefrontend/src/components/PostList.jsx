@@ -3,13 +3,15 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import PostView from "./PostView";
 import UpdatePost from "./UpdatePostcontent";
+import { useNavigate } from "react-router-dom";
 
 const PostList = () => {
   const [Data,setData]=useState()
+  const nav=useNavigate()
 
   useEffect(()=>{
     async function fetch(){
-      const user=await axios.get("http://localhost:8000/allpost")
+      const user=await axios.get("https://adove.onrender.com/allpost")
       setData(user.data)
     }
     fetch()
@@ -17,10 +19,11 @@ const PostList = () => {
   },[])
 
   const handleDelete = (_id) => {
-    axios.delete(`http://localhost:8000/posts/${_id}`)
+    axios.delete(`https://adove.onrender.com/posts/${_id}`)
     .then((res) => {
       console.log(res);
       alert("Post has been delete")
+      nav("/PostAnalytics")
       
     })
     .catch((err) => {

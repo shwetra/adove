@@ -37,7 +37,7 @@ import {
         const handlecreate = async (e) => {
           e.preventDefault();
           console.log(formData);
-          axios.post("http://localhost:8000/posts", formData)
+          axios.post("https://adove.onrender.com/posts", formData)
             .then((res) => {
               console.log(res);
               alert("content has been created");

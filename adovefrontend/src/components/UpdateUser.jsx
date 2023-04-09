@@ -43,7 +43,7 @@ export default function Update({id}) {
           e.preventDefault();
           console.log(formData); 
           console.log(id)  
-         await axios.put(`http://localhost:8000/users/${id}`, formData)
+         await axios.put(`https://adove.onrender.com/users/${id}`, formData)
             .then((res) => {
               console.log(res);
               alert("user has been updated");

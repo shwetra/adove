@@ -9,18 +9,11 @@ const PostAnalytics = () => {
 
   useEffect(()=>{
     async function fetchall(){
-      const user=await axios.get("http://localhost:8000/analytics/posts")
+      const user=await axios.get("https://adove.onrender.com/analytics/posts")
       setallData(user.data.total_post)
     }
     fetchall()
   },[])
-
-  const Handle=()=>{
-    nav("/")
-  }
-
-
-  
 
   return (
     <>
@@ -43,7 +36,6 @@ const PostAnalytics = () => {
 
   {/* //top 5 liked post */}
 
-    <Button onClick={Handle} mt="20px">Go Back</Button>
     </>
   );
 };
