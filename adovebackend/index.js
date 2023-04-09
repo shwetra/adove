@@ -139,6 +139,20 @@ app.get('/analytics/users/top-active', async (req, res) => {
   }
 });
 
+app.patch("/posts/:id/like",async(req,res)=>{
+      const post = await Post.findById(req.params.id)
+      post.likes++;
+      await post.save()
+res.send(post)
+})
+
+app.patch("/posts/:id/dislike",async(req,res)=>{
+  const post = await Post.findById(req.params.id)
+  post.likes--;
+  await post.save()
+res.send(post)
+})
+
 app.listen(PORT || 6000, () => {
   dbConnect();
   console.log(`Server started on port ${PORT}`);
